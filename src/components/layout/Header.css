@@ -1,0 +1,5 @@
+.main-header {
+  background: var(--color-moonstone);
+  color: var(--color-beige);
+  padding: 30px 50px;
+}

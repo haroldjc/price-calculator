@@ -2,14 +2,25 @@
   --color-beige: rgb(249, 247, 243);
   --color-moonstone: rgb(15, 163, 177);
   --color-uranian-blue: rgb(181, 226, 250);
+  --color-vanilla: rgb(237, 222, 164);
+  --color-tangerine: rgb(247, 160, 114);
 }
 
 body {
   background: var(--color-beige);
 }
 
-.main-header {
-  background: var(--color-moonstone);
-  color: var(--color-beige);
-  padding: 30px 50px;
+.content-wrapper {
+  margin: auto;
+  max-width: 1200px;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
 }
