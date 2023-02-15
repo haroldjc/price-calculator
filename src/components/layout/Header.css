@@ -1,5 +1,9 @@
 .main-header {
   background: var(--color-moonstone);
   color: var(--color-beige);
-  padding: 30px 50px;
+  padding: 30px;
+}
+
+.main-header h1 {
+  margin: 0;
 }
