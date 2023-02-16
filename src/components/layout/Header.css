@@ -1,9 +1,30 @@
 .main-header {
-  background: var(--color-moonstone);
-  color: var(--color-beige);
-  padding: 30px 0;
+  color: var(--color-moonstone);
 }
 
-.main-header h1 {
+.main-header__wrapper {
+  border-bottom: 1px solid var(--color-moonstone);
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.main-header__logo {
+  align-items: center;
+  display: flex;
+  font-size: 24px;
+  height: inherit;
   margin: 0;
+}
+
+.main-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.main-nav__item {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  text-decoration: none;
 }

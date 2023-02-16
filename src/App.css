@@ -1,9 +1,17 @@
 :root {
+  /* Colors */
   --color-beige: rgb(249, 247, 243);
   --color-moonstone: rgb(15, 163, 177);
   --color-uranian-blue: rgb(181, 226, 250);
   --color-vanilla: rgb(237, 222, 164);
   --color-tangerine: rgb(247, 160, 114);
+
+  /* Gaps */
+  --gap-small: 12px;
+  --gap-medium: 20px;
+
+  /* Box sizes */
+  --width-main-container: 800px;
 }
 
 body {
@@ -12,8 +20,8 @@ body {
 
 .content-wrapper {
   margin: auto;
-  max-width: 800px;
-  padding: 0 20px;
+  max-width: var(--width-main-container);
+  padding: 0 var(--gap-medium);
 }
 
 .app-main {
@@ -26,10 +34,21 @@ body {
   flex: 1;
 }
 
+/* Links */
+
+a:link,
+a:visited {
+  color: var(--color-moonstone);
+}
+
+a:hover {
+  color: var(--color-tangerine);
+}
+
 /* Buttons */
 
-.button, button {
-  --height: 44px;
+.button {
+  --height: 40px;
   align-items: center;
   background: var(--color-tangerine);
   border-radius: 6px;
@@ -37,17 +56,70 @@ body {
   color: #fff;
   cursor: pointer;
   display: inline-flex;
+  font-size: 16px;
+  font-weight: bold;
   height: var(--height);
   justify-content: center;
   line-height: var(--height);
   min-width: 10ch;
-  padding: 0 1.2em;
+  padding: 0 2em;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.button:hover,
-button:hover {
-  background: var(--color-moonstone);
+.button + .button {
+  margin-left: var(--gap-small);
+}
+
+.button:hover {
+  
+}
+
+.button--secondary {
+  background: var(--color-beige);
+  color: var(--color-tangerine);
+  border: 2px solid var(--color-tangerine);
+}
+
+/* Modal */
+
+.modal {
+  align-items: center;
+  background: rgba(249, 247, 243, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal__inner {
+  background: var(--color-beige);
+  border-radius: 10px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  width: 100%;
+  max-width: var(--width-main-container);
+}
+
+@media (min-height: 720px) {
+  .modal__inner {
+    margin-top: -20vh;
+    min-height: 480px;
+  }
+}
+
+.modal__header {
+
+}
+
+.modal__footer {
+  margin-top: auto;
 }

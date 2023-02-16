@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className='main-footer'>
       <div className='content-wrapper'>
-        <strong>&copy;{new Date().getFullYear()} Get Price!</strong> Created by @haroldjc
+        <strong>&copy;{new Date().getFullYear()} GetPrice!</strong> Creado por <a href='https://twitter.com/haroldjc'>@haroldjc</a>
       </div>
     </footer>
   );
