@@ -37,5 +37,15 @@
       "weight": 1000
     }
   ],
-  "products": []
+  "products": [
+    {
+      "name": "Babka",
+      "ingredients": [
+        {
+          "id": 1,
+          "amount": 250
+        }
+      ]
+    }
+  ]
 }
