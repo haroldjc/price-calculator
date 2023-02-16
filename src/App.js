@@ -25,7 +25,11 @@ const App = () => {
 
   const addIngredientHandler = id => {
     const ingredientsList = structuredClone(newProduct.ingredients)
-    // TODO: check if ingredient is already in
+
+    if (ingredientsList.find(item => item.id === id)) {
+      return
+    }
+
     ingredientsList.push({id: id, amount: 0})
 
     setNewProduct({
