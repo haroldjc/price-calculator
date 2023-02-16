@@ -33,7 +33,7 @@ const IngredientSearch = ({ addIngredientHandler }) => {
       <ul className='ingredient-search__results'>
         {
           ingredientQuery !== ''
-            ? filteredSupplies.map(ingredient => <li key={ingredient.id}>{ingredient.name}</li>)
+            ? filteredSupplies.map(ingredient => <li key={ingredient.id} onClick={() => addIngredientHandler(ingredient.id)}>{ingredient.name}</li>)
             : <></>
         }
       </ul>

@@ -1,7 +1,7 @@
 import './NewProductModal.css';
 import IngredientSearch from './IngredientSearch';
 
-const NewProductModal = ({ ingredients, saveProductHandler }) => {
+const NewProductModal = ({ addIngredientHandler }) => {
   return (
     <div className='modal'>
       <div className='modal__inner'>
@@ -13,7 +13,7 @@ const NewProductModal = ({ ingredients, saveProductHandler }) => {
           <div>
             <button>Agregar ingrediente</button>
           </div>
-          <IngredientSearch ingredients={ingredients} />
+          <IngredientSearch addIngredientHandler={addIngredientHandler} />
           <div>
             <button>Guardar</button>
           </div>

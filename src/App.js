@@ -10,6 +10,10 @@ import NewProductModal from './components/product/NewProductModal'
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const [newProduct, setNewProduct] = useState({
+    name: '',
+    ingredients: []
+  })
 
   useEffect(() => {
     productsService
@@ -19,7 +23,18 @@ const App = () => {
       })
   }, [])
 
-  console.log(products)
+  const addIngredientHandler = id => {
+    const ingredientsList = structuredClone(newProduct.ingredients)
+    // TODO: check if ingredient is already in
+    ingredientsList.push({id: id, amount: 0})
+
+    setNewProduct({
+      ...newProduct,
+      ingredients: ingredientsList
+    })
+  }
+
+  console.log(newProduct)
 
   return (
     <main className='app-main'>
@@ -27,7 +42,7 @@ const App = () => {
       <section className='main-content'>
         <div className='content-wrapper'>
           <Home />
-          <NewProductModal />
+          <NewProductModal addIngredientHandler={addIngredientHandler} />
         </div>
       </section>
       <Footer />
