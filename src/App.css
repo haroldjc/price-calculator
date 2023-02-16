@@ -5,13 +5,22 @@
   --color-uranian-blue: rgb(181, 226, 250);
   --color-vanilla: rgb(237, 222, 164);
   --color-tangerine: rgb(247, 160, 114);
+  --color-brown-light-0: #EAE4D9;
+  --color-brown-light-1: #D1CABC;
+  --color-brown-light-2: #CBC1AE;
+  --color-brown: #817355;
 
   /* Gaps */
   --gap-small: 12px;
-  --gap-medium: 20px;
+  --gap-medium: 25px;
+  --gap-big: 40px;
 
   /* Box sizes */
   --width-main-container: 800px;
+
+  /* Border radius */
+  --radius-small: 5px;
+  --radius-medium: 10px;
 }
 
 body {
@@ -82,15 +91,41 @@ a:hover {
   border: 2px solid var(--color-tangerine);
 }
 
+/* Forms */
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="search"] {
+  border: 1px solid var(--color-brown-light-1);
+  border-radius: var(--radius-small);
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 40px;
+  outline: none;
+  padding: 0 var(--gap-small);
+  width: 100%;
+}
+
+input:active,
+input:focus {
+  border: 1px solid var(--color-brown);
+}
+
+input::placeholder {
+  color: var(--color-brown-light-2);
+}
+
 /* Modal */
 
 .modal {
   align-items: center;
-  background: rgba(249, 247, 243, 0.7);
+  background: rgba(249, 247, 243, 0.85);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding: var(--gap-medium);
   position: absolute;
     top: 0;
     right: 0;
@@ -109,17 +144,36 @@ a:hover {
   max-width: var(--width-main-container);
 }
 
-@media (min-height: 720px) {
+@media (min-height: 640px) {
   .modal__inner {
-    margin-top: -20vh;
     min-height: 480px;
   }
 }
 
 .modal__header {
+  border-bottom: 1px solid var(--color-moonstone);
+  margin-bottom: 20px;
+  padding-bottom: var(--gap-medium);
+}
 
+.modal__content {
+  color: var(--color-brown);
+}
+
+.modal__title {
+  color: var(--color-moonstone);
+  font-size: 20px;
+  margin: 0;
+}
+
+.modal__subtitle {
+  color: var(--color-moonstone);
+  font-size: 16px;
+  margin-top: 0;
 }
 
 .modal__footer {
+  border-top: 1px solid var(--color-moonstone);
   margin-top: auto;
+  padding-top: var(--gap-medium);
 }

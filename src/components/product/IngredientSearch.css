@@ -1,5 +1,52 @@
 .ingredient-search {
-  border: 1px solid var(--color-moonstone);
-  border-radius: 20px;
-  padding: 20px;
+  position: relative;
+}
+
+input[type="search"] {
+  position: relative;
+  z-index: 10;
+}
+
+.ingredient-search__results {
+  background: var(--color-brown-light-0);
+  border-bottom-left-radius: var(--radius-medium);
+  border-bottom-right-radius: var(--radius-medium);
+  list-style-type: none;
+  margin: 0;
+  margin-top: 20px;
+  overflow: hidden;
+  padding: 0;
+  padding-top: 20px;
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.ingredient-search__results li {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: var(--gap-small);
+  position: relative;
+}
+
+.ingredient-search__results li + li {
+  border-top: 1px solid var(--color-brown-light-1);
+}
+
+.ingredient-search__results li:hover {
+  /* background: var(--color-brown-light-1); */
+}
+
+.ingredient-search__results li::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13.717' height='13.717' viewBox='0 0 13.717 13.717'%3E%3Cg id='Grupo_15' data-name='Grupo 15' transform='translate(-3850.763 -3620.817) rotate(45)'%3E%3Cpath id='Trazado_1' data-name='Trazado 1' d='M9.75,11.51,6.921,8.681,4.092,11.51a.889.889,0,0,1-1.257,0l-.5-.5a.889.889,0,0,1,0-1.257L5.16,6.921,2.331,4.092a.889.889,0,0,1,0-1.257l.5-.5a.889.889,0,0,1,1.257,0L6.921,5.16,9.75,2.331a.889.889,0,0,1,1.257,0l.5.5a.889.889,0,0,1,0,1.257L8.681,6.921,11.51,9.75a.889.889,0,0,1,0,1.257l-.5.5a.889.889,0,0,1-1.257,0Z' transform='translate(5285.983 -169.517)' fill='%23d1cabc'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-size: contain;
+  content: '';
+  display: block;
+  position: absolute;
+    top: 15px;
+    right: 10px;
+  width: 12px;
+  height: 12px;
 }

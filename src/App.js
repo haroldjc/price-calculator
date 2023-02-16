@@ -5,7 +5,6 @@ import './App.css';
 import './components/layout/Header'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import Home from './components/Home'
 import NewProductModal from './components/product/NewProductModal'
 
 const App = () => {
@@ -14,6 +13,7 @@ const App = () => {
     name: '',
     ingredients: []
   })
+  const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
 
   useEffect(() => {
     productsService
@@ -22,6 +22,11 @@ const App = () => {
         setProducts(products)
       })
   }, [])
+
+  const handleNewProductModal = () => {
+    const toggleStatus = !displayNewProductModal
+    setDisplayNewProductModal(toggleStatus)
+  }
 
   const addIngredientHandler = id => {
     const ingredientsList = structuredClone(newProduct.ingredients)
@@ -45,8 +50,17 @@ const App = () => {
       <Header title='Get Price!' />
       <section className='main-content'>
         <div className='content-wrapper'>
-          <Home />
-          <NewProductModal addIngredientHandler={addIngredientHandler} />
+          <div className='home'>
+            <p>Esta app puede calcular el costo de un producto en base a ingredientes.</p>
+            <p>Puede empezar agregando un producto nuevo.</p>
+            <button onClick={handleNewProductModal}>Agregar producto</button>
+          </div>
+          <NewProductModal
+            display={displayNewProductModal}
+            displayHandler={handleNewProductModal}
+            addIngredientHandler={addIngredientHandler}
+            newProduct={newProduct}
+          />
         </div>
       </section>
       <Footer />

@@ -1,30 +1,40 @@
 import './NewProductModal.css';
 import IngredientSearch from './IngredientSearch';
+import IngredientsList from './IngredientsList'
 
-const NewProductModal = ({ addIngredientHandler }) => {
+const NewProductModal = ({ newProduct, addIngredientHandler, display, displayHandler }) => {
+
+  if (!display) {
+    return null
+  }
+
   return (
     <div className='modal'>
       <div className='modal__inner'>
         <header className='modal__header'>
-          <h3 className='modal__title'>Nuevo producto</h3>
+          <h2 className='modal__title'>Nuevo producto</h2>
         </header>
-        <article>
-          <form>
-            <div>
-              <input type='text' name='name' placeholder='Nombre' autoComplete='off'></input>
+        <article className='modal__content'>
+          <form className='new-product'>
+            <div className='new-product__fields'>
+              <div className='new-product__field'>
+                <input type='text' name='name' placeholder='Nombre' autoComplete='off'></input>
+              </div>
+              <div className='new-product__field'>
+                <input type='text' name='category' placeholder='Categoría'></input>
+              </div>
             </div>
-            <div>
-              <button>Agregar ingrediente</button>
-            </div>
-            <IngredientSearch addIngredientHandler={addIngredientHandler} />
-            <div>
-              <button>Guardar</button>
+            <div className='new-product__ingredients'>
+              <h3 className='modal__subtitle'>Ingredients</h3>
+              <IngredientsList ingredients={newProduct.ingredients} />
+              <h3 className='modal__subtitle'>Agregar ingrediente</h3>
+              <IngredientSearch addIngredientHandler={addIngredientHandler} />
             </div>
           </form>
         </article>
         <footer className='modal__footer'>
           <button className='button'>Guardar</button>
-          <button className='button button--secondary'>Cancelar</button>
+          <button className='button button--secondary' onClick={displayHandler}>Cancelar</button>
         </footer>
       </div>
     </div>

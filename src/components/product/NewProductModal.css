@@ -1,0 +1,9 @@
+.new-product {
+  display: grid;
+  gap: var(--gap-big);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.new-product__field + .new-product__field {
+  margin-top: var(--gap-small);
+}
