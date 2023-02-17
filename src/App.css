@@ -101,6 +101,7 @@ input[type="search"] {
   border: 1px solid var(--color-brown-light-1);
   border-radius: var(--radius-small);
   box-sizing: border-box;
+  color: var(--color-brown);
   font-size: 16px;
   height: 40px;
   outline: none;
@@ -158,6 +159,7 @@ input::placeholder {
 
 .modal__content {
   color: var(--color-brown);
+  margin-bottom: var(--gap-medium);
 }
 
 .modal__title {

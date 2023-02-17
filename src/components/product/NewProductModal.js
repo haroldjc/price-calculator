@@ -1,8 +1,38 @@
 import './NewProductModal.css';
+import { useState } from 'react';
 import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
 
-const NewProductModal = ({ newProduct, addIngredientHandler, display, displayHandler }) => {
+const NewProductModal = ({ display, displayHandler, supplies }) => {
+
+  const [ingredientQuery, setIngredientQuery] = useState('')
+  const [newProduct, setNewProduct] = useState({
+    name: '',
+    ingredients: []
+  })
+
+  const addIngredientHandler = id => {
+    const ingredientsList = structuredClone(newProduct.ingredients)
+
+    if (ingredientsList.find(item => item.id === id)) {
+      return
+    }
+
+    ingredientsList.push({id: id, amount: 0})
+
+    setNewProduct({
+      ...newProduct,
+      ingredients: ingredientsList
+    })
+
+    setIngredientQuery('')
+  }
+
+  const handleIngredientQueryChange = event => {
+    setIngredientQuery(event.target.value)
+  }
+
+  console.log(newProduct)
 
   if (!display) {
     return null
@@ -26,9 +56,17 @@ const NewProductModal = ({ newProduct, addIngredientHandler, display, displayHan
             </div>
             <div className='new-product__ingredients'>
               <h3 className='modal__subtitle'>Ingredients</h3>
-              <IngredientsList ingredients={newProduct.ingredients} />
+              <IngredientsList
+                ingredients={newProduct.ingredients}
+                supplies={supplies}
+              />
               <h3 className='modal__subtitle'>Agregar ingrediente</h3>
-              <IngredientSearch addIngredientHandler={addIngredientHandler} />
+              <IngredientSearch
+                addIngredientHandler={addIngredientHandler}
+                handleIngredientQueryChange={handleIngredientQueryChange}
+                ingredientQuery={ingredientQuery}
+                supplies={supplies}
+              />
             </div>
           </form>
         </article>

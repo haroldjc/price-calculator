@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import productsService from './services/products'
+import suppliesService from './services/supplies'
 import './App.css';
 // Components
 import './components/layout/Header'
@@ -9,10 +10,7 @@ import NewProductModal from './components/product/NewProductModal'
 
 const App = () => {
   const [products, setProducts] = useState([])
-  const [newProduct, setNewProduct] = useState({
-    name: '',
-    ingredients: []
-  })
+  const [supplies, setSupplies] = useState([])
   const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
 
   useEffect(() => {
@@ -21,29 +19,18 @@ const App = () => {
       .then(products => {
         setProducts(products)
       })
+
+    suppliesService
+      .getAll()
+      .then(supplies => {
+        setSupplies(supplies)
+      })
   }, [])
 
   const handleNewProductModal = () => {
     const toggleStatus = !displayNewProductModal
     setDisplayNewProductModal(toggleStatus)
   }
-
-  const addIngredientHandler = id => {
-    const ingredientsList = structuredClone(newProduct.ingredients)
-
-    if (ingredientsList.find(item => item.id === id)) {
-      return
-    }
-
-    ingredientsList.push({id: id, amount: 0})
-
-    setNewProduct({
-      ...newProduct,
-      ingredients: ingredientsList
-    })
-  }
-
-  console.log(newProduct)
 
   return (
     <main className='app-main'>
@@ -58,8 +45,7 @@ const App = () => {
           <NewProductModal
             display={displayNewProductModal}
             displayHandler={handleNewProductModal}
-            addIngredientHandler={addIngredientHandler}
-            newProduct={newProduct}
+            supplies={supplies}
           />
         </div>
       </section>

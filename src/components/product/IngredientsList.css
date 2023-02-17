@@ -1,0 +1,25 @@
+.ingredients-list {
+  margin-bottom: var(--gap-medium);
+}
+
+.ingredient-item {
+  border-left: 2px solid var(--color-brown-light-1);
+  display: grid;
+  grid-template-columns: 3fr 2fr 20px;
+  gap: var(--gap-small);
+  padding-left: var(--gap-small);
+}
+
+.ingredient-item span {
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-item + .ingredient-item {
+  margin-top: var(--gap-small);
+}
+
+.ingredient-item input {
+  height: 30px;
+  text-align: center;
+}
