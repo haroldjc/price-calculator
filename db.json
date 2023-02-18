@@ -45,6 +45,7 @@
   ],
   "products": [
     {
+      "id": 1,
       "name": "Babka",
       "ingredients": [
         {
@@ -52,6 +53,42 @@
           "amount": 250
         }
       ]
+    },
+    {
+      "name": "Babka de chocolate",
+      "ingredients": [
+        {
+          "id": 1,
+          "amount": 100
+        },
+        {
+          "id": 2,
+          "amount": 100
+        },
+        {
+          "id": 3,
+          "amount": 100
+        }
+      ],
+      "id": 2
+    },
+    {
+      "name": "Babka de Canela",
+      "ingredients": [
+        {
+          "id": 1,
+          "amount": 250
+        },
+        {
+          "id": 3,
+          "amount": 45
+        },
+        {
+          "id": 5,
+          "amount": 12
+        }
+      ],
+      "id": 3
     }
   ]
 }

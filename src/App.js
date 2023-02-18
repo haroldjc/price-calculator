@@ -46,6 +46,7 @@ const App = () => {
             display={displayNewProductModal}
             displayHandler={handleNewProductModal}
             supplies={supplies}
+            productsService={productsService}
           />
         </div>
       </section>

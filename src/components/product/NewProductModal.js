@@ -3,13 +3,20 @@ import { useState } from 'react';
 import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
 
-const NewProductModal = ({ display, displayHandler, supplies }) => {
+const NewProductModal = ({ display, displayHandler, supplies, productsService }) => {
 
   const [ingredientQuery, setIngredientQuery] = useState('')
   const [newProduct, setNewProduct] = useState({
     name: '',
     ingredients: []
   })
+
+  const handleNameChange = event => {
+    setNewProduct({
+      ...newProduct,
+      name: event.target.value
+    })
+  }
 
   const ingredientsList = structuredClone(newProduct.ingredients)
 
@@ -51,6 +58,27 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
 
   console.log(newProduct)
 
+  const saveNewProduct = () => {
+
+    const productObject = {
+      name: newProduct.name,
+      ingredients: newProduct.ingredients
+    }
+
+    productsService
+      .create(productObject)
+      .then(savedProduct => {
+        console.log(`${savedProduct.name} was saved successfully!`)
+        setNewProduct({
+          name: '',
+          ingredients: []
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   if (!display) {
     return null
   }
@@ -65,7 +93,7 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
           <form className='new-product'>
             <div className='new-product__fields'>
               <div className='new-product__field'>
-                <input type='text' name='name' placeholder='Nombre' autoComplete='off'></input>
+                <input onChange={handleNameChange} value={newProduct.name} type='text' name='name' placeholder='Nombre' autoComplete='off' />
               </div>
               <div className='new-product__field'>
                 <input type='text' name='category' placeholder='Categoría'></input>
@@ -90,7 +118,7 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
           </form>
         </article>
         <footer className='modal__footer'>
-          <button className='button'>Guardar</button>
+          <button className='button' onClick={saveNewProduct}>Guardar</button>
           <button className='button button--secondary' onClick={displayHandler}>Cancelar</button>
         </footer>
       </div>
