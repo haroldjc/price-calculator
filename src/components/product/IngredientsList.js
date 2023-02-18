@@ -1,7 +1,7 @@
 import './IngredientsList.css';
 import IngredientItem from './IngredientItem';
 
-const IngredientsList = ({ product, supplies, handleAmountChange }) => {
+const IngredientsList = ({ product, supplies, handleAmountChange, handleDeleteIngredient }) => {
 
   return (
     <div className='ingredients-list'>
@@ -14,6 +14,7 @@ const IngredientsList = ({ product, supplies, handleAmountChange }) => {
               ingredient={ingredient}
               supplies={supplies}
               handleAmountChange={handleAmountChange}
+              handleDeleteIngredient={handleDeleteIngredient}
             />)
       }
     </div>

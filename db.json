@@ -5,42 +5,42 @@
       "name": "Harina",
       "price": 3.6,
       "weight": 1000,
-      "unit": "grams"
+      "unit": "g"
     },
     {
       "id": 2,
       "name": "Nutella",
       "price": 43,
       "weight": 750,
-      "unit": "grams"
+      "unit": "g"
     },
     {
       "id": 3,
       "name": "Mantequilla",
       "price": 35,
       "weight": 1000,
-      "unit": "grams"
+      "unit": "g"
     },
     {
       "id": 4,
       "name": "Leche fresca",
       "price": 4.85,
       "weight": 1000,
-      "unit": "grams"
+      "unit": "ml"
     },
     {
       "id": 5,
       "name": "Levadura",
       "price": 10,
       "weight": 1000,
-      "unit": "grams"
+      "unit": "g"
     },
     {
       "id": 6,
       "name": "Azúcar",
       "price": 4.3,
       "weight": 1000,
-      "unit": "grams"
+      "unit": "g"
     }
   ],
   "products": [

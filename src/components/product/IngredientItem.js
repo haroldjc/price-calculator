@@ -1,4 +1,4 @@
-const IngredientItem = ({ ingredient, supplies, handleAmountChange }) => {
+const IngredientItem = ({ ingredient, supplies, handleAmountChange, handleDeleteIngredient }) => {
 
   const supply = supplies.find(supply => supply.id === ingredient.id)
 
@@ -11,7 +11,7 @@ const IngredientItem = ({ ingredient, supplies, handleAmountChange }) => {
       <span className='ingredient-item__unit'>
         {supply.unit}
       </span>
-      <button>x</button>
+      <button className='ingredient-item__delete' onClick={() => handleDeleteIngredient(ingredient.id)}>x</button>
     </div>
   );
 }

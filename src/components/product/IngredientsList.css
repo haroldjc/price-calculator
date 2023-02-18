@@ -5,7 +5,7 @@
 .ingredient-item {
   border-left: 2px solid var(--color-brown-light-1);
   display: grid;
-  grid-template-columns: 1fr 80px 70px 20px;
+  grid-template-columns: 1fr 80px 40px 20px;
   padding-left: var(--gap-small);
 }
 
@@ -19,7 +19,8 @@
 }
 
 .ingredient-item__name,
-.ingredient-item__unit {
+.ingredient-item__unit,
+.ingredient-item__delete {
   display: flex;
   align-items: center;
 }
@@ -28,4 +29,21 @@
   color: var(--color-brown-light-2);
   font-size: 14px;
   padding-left: 5px;
+}
+
+.ingredient-item__delete {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9.699' height='9.699' viewBox='0 0 9.699 9.699'%3E%3Cg id='Grupo_11' data-name='Grupo 11' transform='translate(-5288.055 167.446)'%3E%3Cpath id='Trazado_1' data-name='Trazado 1' d='M9.75,11.51,6.921,8.681,4.092,11.51a.889.889,0,0,1-1.257,0l-.5-.5a.889.889,0,0,1,0-1.257L5.16,6.921,2.331,4.092a.889.889,0,0,1,0-1.257l.5-.5a.889.889,0,0,1,1.257,0L6.921,5.16,9.75,2.331a.889.889,0,0,1,1.257,0l.5.5a.889.889,0,0,1,0,1.257L8.681,6.921,11.51,9.75a.889.889,0,0,1,0,1.257l-.5.5a.889.889,0,0,1-1.257,0Z' transform='translate(5285.983 -169.517)' fill='%23817355'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  opacity: 0.35;
+  text-indent: -999em;
+  transition: all 0.3s ease;
+  height: auto;
+}
+
+.ingredient-item__delete:hover {
+  opacity: 0.75;
 }

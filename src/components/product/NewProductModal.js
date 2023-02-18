@@ -11,9 +11,9 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
     ingredients: []
   })
 
-  const addIngredientHandler = id => {
-    const ingredientsList = structuredClone(newProduct.ingredients)
+  const ingredientsList = structuredClone(newProduct.ingredients)
 
+  const addIngredientHandler = id => {
     if (ingredientsList.find(item => item.id === id)) {
       return
     }
@@ -30,13 +30,18 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
   
   const handleAmountChange = (id, event) => {
     event.preventDefault()
-    const ingredientsList = structuredClone(newProduct.ingredients)
-
     ingredientsList.find(item => item.id === id).amount = Number(event.target.value)
     
     setNewProduct({
       ...newProduct,
       ingredients: ingredientsList
+    })
+  }
+
+  const handleDeleteIngredient = id => {
+    setNewProduct({
+      ...newProduct,
+      ingredients: ingredientsList.filter(item => item.id !== id)
     })
   }
   
@@ -72,6 +77,7 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
                 product={newProduct}
                 supplies={supplies}
                 handleAmountChange={handleAmountChange}
+                handleDeleteIngredient={handleDeleteIngredient}
               />
               <h3 className='modal__subtitle'>Agregar ingrediente</h3>
               <IngredientSearch
