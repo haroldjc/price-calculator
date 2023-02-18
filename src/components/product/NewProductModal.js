@@ -27,7 +27,18 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
 
     setIngredientQuery('')
   }
-
+  
+  const handleAmountChange = (id, event) => {
+    event.preventDefault()
+    const ingredientsList = structuredClone(newProduct.ingredients)
+    ingredientsList.find(item => item.id === id).amount = event.target.value
+    
+    setNewProduct({
+      ...newProduct,
+      ingredients: ingredientsList
+    })
+  }
+  
   const handleIngredientQueryChange = event => {
     setIngredientQuery(event.target.value)
   }
@@ -57,8 +68,9 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
             <div className='new-product__ingredients'>
               <h3 className='modal__subtitle'>Ingredients</h3>
               <IngredientsList
-                ingredients={newProduct.ingredients}
+                product={newProduct}
                 supplies={supplies}
+                handleAmountChange={handleAmountChange}
               />
               <h3 className='modal__subtitle'>Agregar ingrediente</h3>
               <IngredientSearch

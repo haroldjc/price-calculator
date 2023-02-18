@@ -1,14 +1,20 @@
 import './IngredientsList.css';
 import IngredientItem from './IngredientItem';
 
-const IngredientsList = ({ ingredients, supplies }) => {
+const IngredientsList = ({ product, supplies, handleAmountChange }) => {
 
   return (
     <div className='ingredients-list'>
       {
-        ingredients.length === 0
+        product.ingredients.length === 0
           ? <p className='no-ingredients'>Usa el buscador de ingredientes inferior para agregarlos a este producto.</p>
-          : ingredients.map(ingredient => <IngredientItem key={ingredient.id} ingredient={ingredient} supplies={supplies} />)
+          : product.ingredients.map(ingredient =>
+            <IngredientItem
+              key={ingredient.id}
+              ingredient={ingredient}
+              supplies={supplies}
+              handleAmountChange={handleAmountChange}
+            />)
       }
     </div>
   );
