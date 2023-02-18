@@ -5,14 +5,8 @@
 .ingredient-item {
   border-left: 2px solid var(--color-brown-light-1);
   display: grid;
-  grid-template-columns: 3fr 2fr 20px;
-  gap: var(--gap-small);
+  grid-template-columns: 1fr 80px 70px 20px;
   padding-left: var(--gap-small);
-}
-
-.ingredient-item span {
-  display: flex;
-  align-items: center;
 }
 
 .ingredient-item + .ingredient-item {
@@ -22,4 +16,16 @@
 .ingredient-item input {
   height: 30px;
   text-align: center;
+}
+
+.ingredient-item__name,
+.ingredient-item__unit {
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-item__unit {
+  color: var(--color-brown-light-2);
+  font-size: 14px;
+  padding-left: 5px;
 }

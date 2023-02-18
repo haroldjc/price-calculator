@@ -18,7 +18,7 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
       return
     }
 
-    ingredientsList.push({id: id, amount: 0})
+    ingredientsList.push({id: id, amount: 100})
 
     setNewProduct({
       ...newProduct,
@@ -31,7 +31,8 @@ const NewProductModal = ({ display, displayHandler, supplies }) => {
   const handleAmountChange = (id, event) => {
     event.preventDefault()
     const ingredientsList = structuredClone(newProduct.ingredients)
-    ingredientsList.find(item => item.id === id).amount = event.target.value
+
+    ingredientsList.find(item => item.id === id).amount = Number(event.target.value)
     
     setNewProduct({
       ...newProduct,
