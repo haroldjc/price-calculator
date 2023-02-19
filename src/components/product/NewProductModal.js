@@ -92,6 +92,20 @@ const NewProductModal = props => {
     return null
   }
 
+  const discardNewProduct = () => {
+    if (newProduct.name !== '' || newProduct.ingredients.length) {
+      if (window.confirm(`¿Quiere descartar la creación del producto "${newProduct.name}"?`)) {  
+        setNewProduct({
+          name: '',
+          categoryId: 1,
+          ingredients: []
+        })
+      }
+    }
+
+    props.displayHandler()
+  }
+
   return (
     <div className='modal'>
       <div className='modal__inner'>
@@ -135,7 +149,7 @@ const NewProductModal = props => {
         </article>
         <footer className='modal__footer'>
           <button className='button' onClick={saveNewProduct}>Guardar</button>
-          <button className='button button--secondary' onClick={props.displayHandler}>Cancelar</button>
+          <button className='button button--secondary' onClick={discardNewProduct}>Cancelar</button>
         </footer>
       </div>
     </div>
