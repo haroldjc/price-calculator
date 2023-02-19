@@ -8,6 +8,7 @@ import './components/layout/Header'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import NewProductModal from './components/product/NewProductModal'
+import ProductItem from './components/product/ProductItem';
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -52,11 +53,13 @@ const App = () => {
                 Agregar producto
               </button>
               <button className='button button--secondary button--big button--full' onClick={handleNewProductModal}>
-                Agregar producto
+                Gestionar suministros
               </button>
             </div>
             <div className='product-list'>
-              Products
+              {
+                products.map(product => <ProductItem key={product.id} product={product} />)
+              }
             </div>
           </div>
           <NewProductModal

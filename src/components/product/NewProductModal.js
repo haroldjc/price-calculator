@@ -39,7 +39,7 @@ const NewProductModal = props => {
   
   const handleAmountChange = (id, event) => {
     event.preventDefault()
-    ingredientsList.find(item => item.id === id).amount = Number(event.target.value)
+    ingredientsList.find(item => item.id === id).amount = parseInt(event.target.value, 10)
     
     setNewProduct({
       ...newProduct,
@@ -130,7 +130,7 @@ const NewProductModal = props => {
               </div>
             </div>
             <div className='new-product__ingredients'>
-              <h3 className='modal__subtitle'>Ingredients</h3>
+              <h3 className='modal__subtitle'>Ingredientes</h3>
               <IngredientsList
                 product={newProduct}
                 supplies={props.supplies}

@@ -102,6 +102,24 @@
         }
       ],
       "id": 3
+    },
+    {
+      "name": "Chocochip cookie",
+      "ingredients": [
+        {
+          "id": 3,
+          "amount": 200
+        },
+        {
+          "id": 1,
+          "amount": 100
+        },
+        {
+          "id": 6,
+          "amount": 100
+        }
+      ],
+      "id": 4
     }
   ]
 }
