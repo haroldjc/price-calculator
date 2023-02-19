@@ -46,9 +46,18 @@ const App = () => {
       <section className='main-content'>
         <div className='content-wrapper'>
           <div className='home'>
-            <p>Esta app puede calcular el costo de un producto en base a ingredientes.</p>
-            <p>Puede empezar agregando un producto nuevo.</p>
-            <button onClick={handleNewProductModal}>Agregar producto</button>
+            <div className='home__start'>
+              <p>Esta plataforma de precios calcula el costo total de un producto en base a sus ingredientes, mano de obra y otros gastos operativos y permite realizar proyecciones para obtener un precio final.</p>
+              <button className='button button--big button--full' onClick={handleNewProductModal}>
+                Agregar producto
+              </button>
+              <button className='button button--secondary button--big button--full' onClick={handleNewProductModal}>
+                Agregar producto
+              </button>
+            </div>
+            <div className='product-list'>
+              Products
+            </div>
           </div>
           <NewProductModal
             display={displayNewProductModal}
