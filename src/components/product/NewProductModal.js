@@ -77,6 +77,7 @@ const NewProductModal = props => {
       .create(productObject)
       .then(savedProduct => {
         console.log(`${savedProduct.name} was saved successfully!`)
+        props.setProducts(props.products.concat(savedProduct))
         setNewProduct({
           name: '',
           categoryId: 1,

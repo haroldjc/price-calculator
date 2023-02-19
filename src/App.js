@@ -65,6 +65,8 @@ const App = () => {
           <NewProductModal
             display={displayNewProductModal}
             displayHandler={handleNewProductModal}
+            products={products}
+            setProducts={setProducts}
             supplies={supplies}
             categories={categories}
             productsService={productsService}

@@ -104,18 +104,18 @@
       "id": 3
     },
     {
-      "name": "Chocochip cookie",
+      "name": "Babka navideño",
       "ingredients": [
-        {
-          "id": 3,
-          "amount": 200
-        },
         {
           "id": 1,
           "amount": 100
         },
         {
-          "id": 6,
+          "id": 3,
+          "amount": 100
+        },
+        {
+          "id": 5,
           "amount": 100
         }
       ],
