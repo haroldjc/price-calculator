@@ -2,6 +2,7 @@ import './NewProductModal.css';
 import { useState } from 'react';
 import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
+import categories from '../../services/categories';
 
 const NewProductModal = props => {
 
@@ -57,6 +58,13 @@ const NewProductModal = props => {
     setIngredientQuery(event.target.value)
   }
 
+  const handleCategoryChange = event => {
+    setNewProduct({
+      ...newProduct,
+      categoryId: Number(event.target.value)
+    })
+  }
+
   console.log(newProduct)
 
   const saveNewProduct = () => {
@@ -97,7 +105,14 @@ const NewProductModal = props => {
                 <input onChange={handleNameChange} value={newProduct.name} type='text' name='name' placeholder='Nombre' autoComplete='off' />
               </div>
               <div className='new-product__field'>
-                <input type='text' name='category' placeholder='Categoría'></input>
+                {/* <input type='text' name='category' placeholder='Categoría'></input> */}
+                <select name='categories' defaultValue={newProduct.categoryId} onChange={handleCategoryChange}>
+                  {
+                    props.categories.length !== 0
+                      ? props.categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)
+                      : <></>
+                  }
+                </select>
               </div>
             </div>
             <div className='new-product__ingredients'>
