@@ -7,6 +7,7 @@ import './App.css';
 import './components/layout/Header'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import Notification from './components/ui/Notification';
 import NewProductModal from './components/product/NewProductModal'
 import ProductItem from './components/product/ProductItem';
 
@@ -14,6 +15,7 @@ const App = () => {
   const [products, setProducts] = useState([])
   const [supplies, setSupplies] = useState([])
   const [categories, setCategories] = useState([])
+  const [displayNotification, setDisplayNotification] = useState(false)
   const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
 
   useEffect(() => {
@@ -43,6 +45,7 @@ const App = () => {
 
   return (
     <main className='app-main'>
+      <Notification display={displayNotification} />
       <Header title='Get Price!' />
       <section className='main-content'>
         <div className='content-wrapper'>
@@ -70,6 +73,8 @@ const App = () => {
             supplies={supplies}
             categories={categories}
             productsService={productsService}
+            displayNotification={displayNotification}
+            setDisplayNotification={setDisplayNotification}
           />
         </div>
       </section>

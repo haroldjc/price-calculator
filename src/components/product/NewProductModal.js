@@ -78,11 +78,20 @@ const NewProductModal = props => {
       .then(savedProduct => {
         console.log(`${savedProduct.name} was saved successfully!`)
         props.setProducts(props.products.concat(savedProduct))
+        
         setNewProduct({
           name: '',
           categoryId: 1,
           ingredients: []
         })
+
+        props.setDisplayNotification(true)
+        props.displayHandler()
+        
+        setTimeout(() => {
+          props.setDisplayNotification(false)
+        }, 5000)
+
       })
       .catch(error => {
         console.log(error)
