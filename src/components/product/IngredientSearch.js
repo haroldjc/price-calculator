@@ -1,7 +1,7 @@
 import './IngredientSearch.css';
 import { useState, useEffect } from 'react';
 
-const IngredientSearch = ({ addIngredientHandler, ingredientQuery, handleIngredientQueryChange, supplies }) => {
+const IngredientSearch = props => {
 
   const includesString = (string1, string2) => {
     string1 = string1.toLowerCase()
@@ -10,15 +10,15 @@ const IngredientSearch = ({ addIngredientHandler, ingredientQuery, handleIngredi
     return string1.includes(string2)
   }
 
-  const filteredSupplies = supplies.filter(supply => includesString(supply.name, ingredientQuery))
+  const filteredSupplies = props.supplies.filter(supply => includesString(supply.name, props.ingredientQuery))
 
   return (
     <section className='ingredient-search'>
-      <input onChange={handleIngredientQueryChange} value={ingredientQuery} type='search' name='search' placeholder='Buscar ingrediente' autoComplete='off' />
+      <input onChange={props.handleIngredientQueryChange} value={props.ingredientQuery} type='search' name='search' placeholder='Buscar ingrediente' autoComplete='off' />
       <ul className='ingredient-search__results'>
         {
-          ingredientQuery !== ''
-            ? filteredSupplies.map(ingredient => <li key={ingredient.id} onClick={() => addIngredientHandler(ingredient.id)}>{ingredient.name}</li>)
+          props.ingredientQuery !== ''
+            ? filteredSupplies.map(ingredient => <li key={ingredient.id} onClick={() => props.handleAddIngredient(ingredient.id)}>{ingredient.name}</li>)
             : <></>
         }
       </ul>

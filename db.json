@@ -43,10 +43,21 @@
       "unit": "g"
     }
   ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Panes"
+    },
+    {
+      "id": 2,
+      "name": "Galletas"
+    }
+  ],
   "products": [
     {
       "id": 1,
       "name": "Babka",
+      "categoryId": 1,
       "ingredients": [
         {
           "id": 1,
@@ -56,6 +67,7 @@
     },
     {
       "name": "Babka de chocolate",
+      "categoryId": 1,
       "ingredients": [
         {
           "id": 1,
@@ -74,6 +86,7 @@
     },
     {
       "name": "Babka de Canela",
+      "categoryId": 1,
       "ingredients": [
         {
           "id": 1,

@@ -1,19 +1,19 @@
 import axios from "axios";
 
-const baseURL = `http://localhost:3001/products`
+const baseURL = `http://localhost:3001/categories`
 
 const getAll = () => {
   const request = axios.get(baseURL)
   return request.then(response => response.data)
 }
 
-const create = productObject => {
-  const request = axios.post(baseURL, productObject)
+const create = categoryObject => {
+  const request = axios.post(baseURL, categoryObject)
   return request.then(response => response.data)
 }
 
-const update = productObject => {
-  const request = axios.put(`${baseURL}/${productObject.id}`, productObject)
+const update = categoryObject => {
+  const request = axios.put(`${baseURL}/${categoryObject.id}`, categoryObject)
   return request.then(response => response.data)
 }
 

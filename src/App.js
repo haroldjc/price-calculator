@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import productsService from './services/products'
 import suppliesService from './services/supplies'
+import categoriesService from './services/categories'
 import './App.css';
 // Components
 import './components/layout/Header'
@@ -11,6 +12,7 @@ import NewProductModal from './components/product/NewProductModal'
 const App = () => {
   const [products, setProducts] = useState([])
   const [supplies, setSupplies] = useState([])
+  const [categories, setCategories] = useState([])
   const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
 
   useEffect(() => {
@@ -24,6 +26,12 @@ const App = () => {
       .getAll()
       .then(supplies => {
         setSupplies(supplies)
+      })
+
+    categoriesService
+      .getAll()
+      .then(categories => {
+        setCategories(categories)
       })
   }, [])
 

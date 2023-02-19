@@ -3,11 +3,12 @@ import { useState } from 'react';
 import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
 
-const NewProductModal = ({ display, displayHandler, supplies, productsService }) => {
+const NewProductModal = props => {
 
   const [ingredientQuery, setIngredientQuery] = useState('')
   const [newProduct, setNewProduct] = useState({
     name: '',
+    categoryId: 1,
     ingredients: []
   })
 
@@ -20,7 +21,7 @@ const NewProductModal = ({ display, displayHandler, supplies, productsService })
 
   const ingredientsList = structuredClone(newProduct.ingredients)
 
-  const addIngredientHandler = id => {
+  const handleAddIngredient = id => {
     if (ingredientsList.find(item => item.id === id)) {
       return
     }
@@ -59,18 +60,18 @@ const NewProductModal = ({ display, displayHandler, supplies, productsService })
   console.log(newProduct)
 
   const saveNewProduct = () => {
-
     const productObject = {
       name: newProduct.name,
       ingredients: newProduct.ingredients
     }
 
-    productsService
+    props.productsService
       .create(productObject)
       .then(savedProduct => {
         console.log(`${savedProduct.name} was saved successfully!`)
         setNewProduct({
           name: '',
+          categoryId: 1,
           ingredients: []
         })
       })
@@ -79,7 +80,7 @@ const NewProductModal = ({ display, displayHandler, supplies, productsService })
       })
   }
 
-  if (!display) {
+  if (!props.display) {
     return null
   }
 
@@ -103,23 +104,23 @@ const NewProductModal = ({ display, displayHandler, supplies, productsService })
               <h3 className='modal__subtitle'>Ingredients</h3>
               <IngredientsList
                 product={newProduct}
-                supplies={supplies}
+                supplies={props.supplies}
                 handleAmountChange={handleAmountChange}
                 handleDeleteIngredient={handleDeleteIngredient}
               />
               <h3 className='modal__subtitle'>Agregar ingrediente</h3>
               <IngredientSearch
-                addIngredientHandler={addIngredientHandler}
+                handleAddIngredient={handleAddIngredient}
                 handleIngredientQueryChange={handleIngredientQueryChange}
                 ingredientQuery={ingredientQuery}
-                supplies={supplies}
+                supplies={props.supplies}
               />
             </div>
           </form>
         </article>
         <footer className='modal__footer'>
           <button className='button' onClick={saveNewProduct}>Guardar</button>
-          <button className='button button--secondary' onClick={displayHandler}>Cancelar</button>
+          <button className='button button--secondary' onClick={props.displayHandler}>Cancelar</button>
         </footer>
       </div>
     </div>
