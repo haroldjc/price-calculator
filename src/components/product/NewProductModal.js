@@ -118,8 +118,8 @@ const NewProductModal = props => {
   }
 
   const modalButtons = [
-    <Button label="Guardar" onClick={saveNewProduct} />,
-    <Button label="Cancelar" onClick={discardNewProduct} variant='secondary' />
+    <Button key='1' label="Guardar" onClick={saveNewProduct} />,
+    <Button key='2' label="Cancelar" onClick={discardNewProduct} variant='secondary' />
   ]
 
   return (
