@@ -2,7 +2,8 @@ import './NewProductModal.css';
 import { useState } from 'react';
 import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
-import categories from '../../services/categories';
+import Modal from '../ui/Modal';
+import Button from '../ui/Button';
 
 const NewProductModal = props => {
 
@@ -116,54 +117,47 @@ const NewProductModal = props => {
     props.displayHandler()
   }
 
+  const modalButtons = [
+    <Button label="Guardar" onClick={saveNewProduct} />,
+    <Button label="Cancelar" onClick={discardNewProduct} variant='secondary' />
+  ]
+
   return (
-    <div className='modal'>
-      <div className='modal__inner'>
-        <header className='modal__header'>
-          <h2 className='modal__title'>Nuevo producto</h2>
-        </header>
-        <article className='modal__content'>
-          <form className='new-product'>
-            <div className='new-product__fields'>
-              <div className='new-product__field'>
-                <input onChange={handleNameChange} value={newProduct.name} type='text' name='name' placeholder='Nombre' autoComplete='off' />
-              </div>
-              <div className='new-product__field'>
-                {/* <input type='text' name='category' placeholder='Categoría'></input> */}
-                <select name='categories' defaultValue={newProduct.categoryId} onChange={handleCategoryChange}>
-                  {
-                    props.categories.length !== 0
-                      ? props.categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)
-                      : <></>
-                  }
-                </select>
-              </div>
-            </div>
-            <div className='new-product__ingredients'>
-              <h3 className='modal__subtitle'>Ingredientes</h3>
-              <IngredientsList
-                product={newProduct}
-                supplies={props.supplies}
-                handleAmountChange={handleAmountChange}
-                handleDeleteIngredient={handleDeleteIngredient}
-              />
-              <h3 className='modal__subtitle'>Agregar ingrediente</h3>
-              <IngredientSearch
-                handleAddIngredient={handleAddIngredient}
-                handleIngredientQueryChange={handleIngredientQueryChange}
-                ingredientQuery={ingredientQuery}
-                supplies={props.supplies}
-              />
-            </div>
-          </form>
-        </article>
-        <footer className='modal__footer'>
-          <button className='button' onClick={saveNewProduct}>Guardar</button>
-          <button className='button button--secondary' onClick={discardNewProduct}>Cancelar</button>
-        </footer>
-      </div>
-    </div>
-  );
+    <Modal title="Crear producto" buttons={modalButtons}>
+      <form className='new-product'>
+        <div className='new-product__fields'>
+          <div className='new-product__field'>
+            <input onChange={handleNameChange} value={newProduct.name} type='text' name='name' placeholder='Nombre' autoComplete='off' />
+          </div>
+          <div className='new-product__field'>
+            <select name='categories' defaultValue={newProduct.categoryId} onChange={handleCategoryChange}>
+              {
+                props.categories.length !== 0
+                  ? props.categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)
+                  : <></>
+              }
+            </select>
+          </div>
+        </div>
+        <div className='new-product__ingredients'>
+          <h3 className='modal__subtitle'>Ingredientes</h3>
+          <IngredientsList
+            product={newProduct}
+            supplies={props.supplies}
+            handleAmountChange={handleAmountChange}
+            handleDeleteIngredient={handleDeleteIngredient}
+          />
+          <h3 className='modal__subtitle'>Agregar ingrediente</h3>
+          <IngredientSearch
+            handleAddIngredient={handleAddIngredient}
+            handleIngredientQueryChange={handleIngredientQueryChange}
+            ingredientQuery={ingredientQuery}
+            supplies={props.supplies}
+          />
+        </div>
+      </form>
+    </Modal>
+  )
 }
 
-export default NewProductModal;
+export default NewProductModal

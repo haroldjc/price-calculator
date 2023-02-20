@@ -1,0 +1,45 @@
+.button {
+  --height: 40px;
+  align-items: center;
+  background: var(--color-moonstone);
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: bold;
+  height: var(--height);
+  justify-content: center;
+  line-height: var(--height);
+  min-width: 10ch;
+  padding: 0 2em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: var(--color-tangerine);
+}
+
+.button--secondary {
+  background: var(--color-beige);
+  color: var(--color-moonstone);
+  border: 2px solid var(--color-moonstone);
+}
+
+.button--secondary:hover {
+  background: var(--color-beige);
+  color: var(--color-tangerine);
+  border-color: var(--color-tangerine);
+}
+
+.button--full {
+  width: 100%;
+}
+
+.button--big {
+  font-size: 24px;
+  height: 96px;
+}
