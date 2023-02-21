@@ -11,6 +11,7 @@ import Notification from './components/ui/Notification';
 import NewProductModal from './components/product/NewProductModal'
 import ProductItem from './components/product/ProductItem';
 import Button from './components/ui/Button';
+import Confirm from './components/ui/Confirm';
 
 const App = () => {
   const [products, setProducts] = useState([])

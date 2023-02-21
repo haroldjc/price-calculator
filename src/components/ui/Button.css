@@ -24,13 +24,13 @@
 }
 
 .button--secondary {
-  background: var(--color-beige);
+  background: transparent;
   color: var(--color-moonstone);
   border: 2px solid var(--color-moonstone);
 }
 
 .button--secondary:hover {
-  background: var(--color-beige);
+  background: transparent;
   color: var(--color-tangerine);
   border-color: var(--color-tangerine);
 }
