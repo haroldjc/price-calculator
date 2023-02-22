@@ -4,7 +4,6 @@ import IngredientSearch from './IngredientSearch';
 import IngredientsList from './IngredientsList'
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
-import Confirm from '../ui/Confirm';
 
 const NewProductModal = props => {
 
@@ -102,16 +101,32 @@ const NewProductModal = props => {
 
   const discardNewProduct = () => {
     if (newProduct.name !== '' || newProduct.ingredients.length) {
-      if (window.confirm(`¿Quiere descartar la creación del producto "${newProduct.name}"?`)) {  
-        setNewProduct({
-          name: '',
-          categoryId: 1,
-          ingredients: []
-        })
-      }
-    }
+      props.setConfirmDialog({
+        display: true,
+        message: `¿Quiere descartar la creación del producto "${newProduct.name}"?`,
+        confirmLabel: 'Descartar',
+        confirmClick: () => {
+          setNewProduct({
+            name: '',
+            categoryId: 1,
+            ingredients: []
+          })
 
-    props.displayHandler()
+          props.setConfirmDialog({
+            display: false
+          })
+
+          props.displayHandler()
+        },
+        cancelClick: () => {
+          props.setConfirmDialog({
+            display: false
+          })
+        }
+      })
+    } else {
+      props.displayHandler()
+    }
   }
 
   if (!props.display) {
@@ -157,10 +172,6 @@ const NewProductModal = props => {
           />
         </div>
       </form>
-      <Confirm
-        display={true}
-        message='¿Desea descartar la creación del producto?'
-      />
     </Modal>
   )
 }

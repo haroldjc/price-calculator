@@ -19,6 +19,14 @@ const App = () => {
   const [categories, setCategories] = useState([])
   const [displayNotification, setDisplayNotification] = useState(false)
   const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
+  const [confirmDialog, setConfirmDialog] = useState({
+    display: false,
+    message: '',
+    confirmLabel: null,
+    confirmClick: null,
+    cancelLabel: null,
+    cancelClick: null
+  })
 
   useEffect(() => {
     productsService
@@ -73,10 +81,19 @@ const App = () => {
             productsService={productsService}
             displayNotification={displayNotification}
             setDisplayNotification={setDisplayNotification}
+            setConfirmDialog={setConfirmDialog}
           />
         </div>
       </section>
       <Footer />
+      <Confirm
+        display={confirmDialog.display}
+        message={confirmDialog.message}
+        confirmLabel={confirmDialog.confirmLabel}
+        confirmClick={confirmDialog.confirmClick}
+        cancelLabel={confirmDialog.cancelLabel}
+        cancelClick={confirmDialog.cancelClick}
+      />
     </main>
   );
 }
