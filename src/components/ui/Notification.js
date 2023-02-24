@@ -1,15 +1,12 @@
 import './Notification.css'
 
 const Notification = props => {
-
-  if (!props.display) {
-    return null
-  }
+  const className = `notification notification--${props.type || 'success'}${props.display ? ' notification--show' : ''}`
 
   return (
-    <section className='notification notification--success'>
+    <section className={className}>
       <figure className='notification__icon'></figure>
-      <p className='notification__message'>El producto fue agregado correctamente</p>
+      <p className='notification__message'>{props.message}</p>
     </section>
   )
 }

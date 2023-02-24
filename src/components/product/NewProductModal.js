@@ -86,11 +86,19 @@ const NewProductModal = props => {
           ingredients: []
         })
 
-        props.setDisplayNotification(true)
+        props.setNotification({
+          display: true,
+          type: 'success',
+          message: 'El producto fue agregado correctamente'
+        })
         props.displayHandler()
         
         setTimeout(() => {
-          props.setDisplayNotification(false)
+          props.setNotification({
+            display: false,
+            type: null,
+            message: ''
+          })
         }, 5000)
 
       })

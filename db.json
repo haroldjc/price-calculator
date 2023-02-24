@@ -138,6 +138,16 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "Cookie",
+      "ingredients": [
+        {
+          "id": 1,
+          "amount": 100
+        }
+      ],
+      "id": 6
     }
   ]
 }

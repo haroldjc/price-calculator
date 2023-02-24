@@ -17,8 +17,12 @@ const App = () => {
   const [products, setProducts] = useState([])
   const [supplies, setSupplies] = useState([])
   const [categories, setCategories] = useState([])
-  const [displayNotification, setDisplayNotification] = useState(false)
   const [displayNewProductModal, setDisplayNewProductModal] = useState(false)
+  const [notification, setNotification] = useState({
+    display: false,
+    type: null,
+    message: ''
+  })
   const [confirmDialog, setConfirmDialog] = useState({
     display: false,
     message: '',
@@ -55,7 +59,11 @@ const App = () => {
 
   return (
     <main className='app-main'>
-      <Notification display={displayNotification} />
+      <Notification
+        display={notification.display}
+        type={notification.type}
+        message={notification.message}
+      />
       <Header title='Get Price!' />
       <section className='main-content'>
         <div className='content-wrapper'>
@@ -79,9 +87,8 @@ const App = () => {
             supplies={supplies}
             categories={categories}
             productsService={productsService}
-            displayNotification={displayNotification}
-            setDisplayNotification={setDisplayNotification}
             setConfirmDialog={setConfirmDialog}
+            setNotification={setNotification}
           />
         </div>
       </section>

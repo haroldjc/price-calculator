@@ -15,13 +15,20 @@
   --gap-medium: 25px;
   --gap-big: 40px;
 
-  /* Box sizes */
+  /* Container sizes */
   --width-main-container: 800px;
 
   /* Border radius */
   --radius-small: 5px;
   --radius-medium: 10px;
   --radius-big: 20px;
+
+  /* Z-index priority */
+  --z-lowest: 1;
+  --z-low: 10;
+  --z-middle: 100;
+  --z-high: 1000;
+  --z-highest: 10000;
 }
 
 body {
